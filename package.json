@@ -1,0 +1,17 @@
+{
+  "name": "playwright-parabank",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ParaBank E2E — Accounts Overview, Open New Account, Transaction History",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:headless": "BROWSER_HEADLESS=true playwright test",
+    "test:ui": "playwright test --ui",
+    "install:browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.0"
+  }
+}

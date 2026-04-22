@@ -1,0 +1,28 @@
+# ParaBank (Parasoft demo) — same public URL as other suites
+# Override with .env or env vars (e.g. BANK_USERNAME).
+
+url=https://parabank.parasoft.com/parabank/index.htm
+base.url=https://parabank.parasoft.com/parabank/index.htm
+
+# Use your demo customer; defaults match ParaBank “john / demo” if unset.
+bank.username=john
+bank.password=demo
+
+bank.register.before.suite=false
+register.url=https://parabank.parasoft.com/parabank/register.htm
+
+register.first.name=Playwright
+register.last.name=Parabank
+register.address.street=1 Test Lane
+register.address.city=Los Angeles
+register.address.state=CA
+register.zip=90001
+register.phone=3105550100
+register.ssn=123456789
+
+# false = browser window visible (headed). Set BROWSER_HEADLESS=true to force headless (e.g. CI).
+browser.headless=false
+browser.slow.mo.ms=0
+
+default.timeout.ms=45000
+navigation.timeout.ms=60000
