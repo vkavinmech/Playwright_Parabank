@@ -1,8 +1,5 @@
-/**
- * Open New Account — form: select#type, select#fromAccountId, submit Open New Account.
- */
 export class OpenNewAccountPage {
-  /** @param {import('@playwright/test').Page} page */
+
   constructor(page) {
     this.page = page;
   }
@@ -32,7 +29,6 @@ export class OpenNewAccountPage {
       .first();
   }
 
-  /** @param {'CHECKING' | 'SAVINGS'} accountTypeLabel */
   async selectAccountType(accountTypeLabel) {
     const sel = this.typeSelect();
     await sel.waitFor({ state: 'attached' });
@@ -49,7 +45,6 @@ export class OpenNewAccountPage {
     throw new Error(`No account type option matching ${accountTypeLabel}`);
   }
 
-  /** Use first funded account option (index 1 when placeholder at 0). */
   async selectFromAccountFirstRealOption() {
     const sel = this.fromAccountSelect();
     await sel.waitFor({ state: 'attached' });
@@ -83,10 +78,6 @@ export class OpenNewAccountPage {
       .first();
   }
 
-  /**
-   * Best-effort parse of new account id from the result panel.
-   * @returns {Promise<string | null>}
-   */
   async readNewAccountId() {
     const panel = this.page.locator('#rightPanel');
     await panel

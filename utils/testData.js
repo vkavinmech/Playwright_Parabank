@@ -3,7 +3,6 @@ function env(key, fallback = '') {
   return v !== undefined && v !== '' ? v : fallback;
 }
 
-/** Demo user and registration fields. Override with env vars (e.g. BANK_USERNAME). */
 export const testData = {
   username: env('BANK_USERNAME', 'john'),
   password: env('BANK_PASSWORD', 'demo'),
@@ -19,3 +18,30 @@ export const testData = {
   registerPhone: env('REGISTER_PHONE', '3105550100'),
   registerSsn: env('REGISTER_SSN', '123456789'),
 };
+
+export const users = {
+  validUser: {
+    username: env('VALID_USER_USERNAME', 'Nantha2602'),
+    password: env('VALID_USER_PASSWORD', 'Nantha@123'),
+  },
+};
+
+const loanEdgeCase = { amount: '999999', downPayment: '0' };
+
+export const loanData = {
+  valid: { amount: '1000', downPayment: '100' },
+  highAmount: loanEdgeCase,
+  edge: loanEdgeCase,
+  invalid: { amount: 'Nantha', downPayment: 'Hello' },
+};
+
+export const loanApprovalAttempts = [
+  { amount: '10', downPayment: '1' },
+  { amount: '20', downPayment: '1' },
+  { amount: '35', downPayment: '1' },
+  { amount: '50', downPayment: '2' },
+  { amount: '75', downPayment: '5' },
+  { amount: '100', downPayment: '8' },
+  { amount: '150', downPayment: '12' },
+  { amount: '200', downPayment: '20' },
+];

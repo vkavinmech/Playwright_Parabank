@@ -2,9 +2,7 @@ import { parseLargestDollarAmount } from '../utils/money.js';
 
 const ROW_HAS_DOLLAR = /\$\s*[0-9]/;
 
-/** Accounts Overview — balances and navigation to account activity / new account. */
 export class AccountsOverviewPage {
-  /** @param {import('@playwright/test').Page} page */
   constructor(page) {
     this.page = page;
   }
@@ -19,7 +17,6 @@ export class AccountsOverviewPage {
     await this.waitForAccountRows();
   }
 
-  /** Table markup can appear before funded account rows render. */
   async waitForAccountRows() {
     await this.page.locator('#accountTable').first().waitFor();
     await this.accountDataRows().first().waitFor({ state: 'visible', timeout: 30000 });
@@ -71,14 +68,12 @@ export class AccountsOverviewPage {
     await row.getByRole('link').first().click();
   }
 
-  /** Open Account Activity for the row whose account link matches this id (e.g. newly opened account). */
   async openAccountActivityForAccountNumber(accountNumber) {
     const row = this.rowWithAccountNumberLink(accountNumber).first();
     await row.getByRole('link').first().click();
     await this.page.waitForLoadState('domcontentloaded');
   }
 
-  /** Row whose first account link text matches (e.g. newly opened account id). */
   rowWithAccountNumberLink(accountNumber) {
     const id = String(accountNumber).trim();
     return this.accountDataRows().filter({
@@ -91,10 +86,6 @@ export class AccountsOverviewPage {
     return (await this.rowWithAccountNumberLink(accountNumber).count()) > 0;
   }
 
-  /**
-   * Every account row exposes a numeric balance.
-   * @returns {Promise<number[]>}
-   */
   async allDisplayedBalances() {
     await this.waitForAccountRows();
     const rows = this.accountDataRows();

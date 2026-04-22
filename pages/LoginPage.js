@@ -1,8 +1,6 @@
 import { paths } from '../config/site.js';
 
-/** Customer login (#loginPanel). */
 export class LoginPage {
-  /** @param {import('@playwright/test').Page} page */
   constructor(page) {
     this.page = page;
   }
@@ -14,6 +12,10 @@ export class LoginPage {
   async gotoLanding() {
     await this.page.goto(paths.home, { waitUntil: 'load' });
     await this.formRoot().locator("input[name='username']").waitFor();
+  }
+
+  async goto() {
+    await this.gotoLanding();
   }
 
   async login(username, password) {

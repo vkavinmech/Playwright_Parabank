@@ -1,8 +1,6 @@
 import { parseLargestDollarAmount } from '../utils/money.js';
 
-/** Account Activity / transaction history for the selected account. */
 export class TransactionHistoryPage {
-  /** @param {import('@playwright/test').Page} page */
   constructor(page) {
     this.page = page;
   }
@@ -26,7 +24,6 @@ export class TransactionHistoryPage {
     return await this.page.locator('#rightPanel').innerText();
   }
 
-  /** Balance line in the activity / history panel. */
   async readBalanceFromPanel() {
     const panel = this.page.locator('#rightPanel');
     await panel.locator('text=/\\$\\s*[0-9]/').first().waitFor();
@@ -44,7 +41,6 @@ export class TransactionHistoryPage {
     return (await rows.filter({ hasText: pattern }).count()) > 0;
   }
 
-  /** Navigate if the app exposes “Find Transactions” in the left panel. */
   async openFindTransactionsIfPresent() {
     const link = this.page.locator('#leftPanel').getByRole('link', { name: /Find Transactions/i });
     if ((await link.count()) === 0) return false;

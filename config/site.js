@@ -8,4 +8,5 @@ export const paths = {
   register: '/parabank/register.htm',
   overview: '/parabank/overview.htm',
   openNewAccount: '/parabank/openaccount.htm',
+  requestLoan: '/parabank/requestloan.htm',
 };
